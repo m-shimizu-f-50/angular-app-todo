@@ -1,4 +1,4 @@
-<div>
+<div class="flex justify-center items-center h-screen">
   <div class="bg-white p-6 md:p-12 shadow-lg rounded-lg">
     <h1 class="text-gray-800 text-3xl md:text-4xl font-bold mb-4">
       404: Not Found
@@ -9,7 +9,7 @@
     </p>
     <button
       class="bg-blue-500 hover:opacity-80 text-white font-bold py-3 px-4 rounded"
-      (click)="navigateToHome()"
+      [routerLink]="['/']"
     >
       トップページに戻る
     </button>

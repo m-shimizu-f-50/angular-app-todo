@@ -7,10 +7,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TodoComponent } from './pages/todo/todo.component';
 
 // ルーティング設定
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'todo', component: TodoComponent },
   { path: '**', component: NotFoundComponent },
 ];
 
@@ -21,6 +23,7 @@ const routes: Routes = [
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
+    TodoComponent,
   ],
   imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [],
