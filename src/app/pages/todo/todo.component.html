@@ -1,0 +1,32 @@
+<div>
+  <div class="flex justify-center py-5 items-center">
+    <p class="font-bold my-5 text-xl">予定一覧表示</p>
+  </div>
+  <div
+    class="main-area flex flex-col justify-between items-center mx-auto w-500"
+  >
+    <!-- <app-filter-list (changeFilter)="changeFilter($event)"></app-filter-list> -->
+    <div class="">
+      <div class="py-2 flex justify-around">
+        <button
+          class="bg-blue-500 hover:opacity-80 text-white font-bold py-3 px-4 rounded"
+          [routerLink]="['/add']"
+        >
+          新規登録
+        </button>
+        <button
+          class="bg-red-500 hover:opacity-80 text-white font-bold py-3 px-4 rounded"
+        >
+          全件削除
+        </button>
+      </div>
+      <div class="py-2" *ngIf="!todoList.length">
+        <p class="text-center">登録されている予定はありません</p>
+      </div>
+      {{ todoList }}
+      <!-- <li *ngFor="let todo of todoList">
+          <app-todo-list [todo]="todo" (proceedStatus)="proceedStatus($event)"></app-todo-list>
+        </li> -->
+    </div>
+  </div>
+</div>
