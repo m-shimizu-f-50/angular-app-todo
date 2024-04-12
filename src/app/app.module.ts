@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -7,12 +8,21 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { TodoComponent } from './pages/todo/todo.component';
+
+import { TodoListComponent } from './pages/todo/todo-list/todo-list.component';
+import { TodoAddComponent } from './pages/todo/todo-add/todo-add.component';
 
 // ルーティング設定
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'todo', component: TodoComponent },
+  {
+    path: 'todo',
+    component: TodoListComponent,
+  },
+  {
+    path: 'todo/add',
+    component: TodoAddComponent,
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
@@ -23,9 +33,15 @@ const routes: Routes = [
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
-    TodoComponent,
+    TodoListComponent,
+    TodoAddComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
