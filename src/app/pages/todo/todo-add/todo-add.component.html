@@ -63,7 +63,16 @@
         </div>
       </div>
       <div class="flex justify-center gap-4">
+        <!-- ボタン押下にバリデーションが発火させたい場合 -->
         <button
+          class="bg-blue-500 hover:opacity-80 text-white font-bold py-3 px-10 rounded"
+          type="submit"
+        >
+          登録
+        </button>
+
+        <!-- 必須項目が全て入力されたらボタンが押せるようにしたい場合 -->
+        <!-- <button
           [ngClass]="{
             'bg-blue-500 hover:opacity-80': !todoForm.invalid,
             'bg-gray-500 opacity-50 cursor-not-allowed': todoForm.invalid
@@ -73,7 +82,7 @@
           [disabled]="todoForm.invalid"
         >
           登録
-        </button>
+        </button> -->
 
         <button
           class="bg-red-500 hover:opacity-80 text-white font-bold py-3 px-6 rounded"

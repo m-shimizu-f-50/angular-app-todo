@@ -22,6 +22,16 @@ export class TodoAddComponent implements OnInit {
   ngOnInit(): void {}
 
   addTodo(): void {
+    /*
+     * ボタン押下時にバリデーションを発火させるための処理
+     * invalidとトリガーとしてバリデーションを発火
+     */
+    if (this.todoForm.invalid) {
+      // フォームのすべてのコントロールを "touched" 状態に設定
+      this.todoForm.markAllAsTouched();
+      return;
+    }
+
     // フォームの値にidとstatusを追加して送信
     const newTodo: Todo = {
       id: 0,
