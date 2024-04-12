@@ -16,7 +16,8 @@
       </div>
       <span
         *ngIf="todoForm.controls['title'].errors?.['required'] && (todoForm.controls['title'].dirty || todoForm.controls['title'].touched)"
-        >タイトルは必須です。</span
+        class="text-red-500"
+        >タイトルは必須項目です。</span
       >
       <div class="my-4 flex justify-center">
         <textarea
@@ -27,31 +28,49 @@
           formControlName="description"
         ></textarea>
       </div>
+      <span
+        *ngIf="todoForm.controls['description'].errors?.['required'] && (todoForm.controls['description'].dirty || todoForm.controls['description'].touched)"
+        class="text-red-500"
+        >内容は必須項目です。</span
+      >
       <div class="flex justify-center my-4">
         <div class="w-full flex">
-          <input
-            class="w-full p-2 border border-gray-300 rounded-md"
-            type="date"
-            formControlName="startDate"
-          />
+          <div class="w-full">
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md"
+              type="date"
+              formControlName="startDate"
+            />
+            <span
+              *ngIf="todoForm.controls['startDate'].errors?.['required'] && (todoForm.controls['startDate'].dirty || todoForm.controls['startDate'].touched)"
+              class="text-red-500"
+              >内容は必須項目です。</span
+            >
+          </div>
           <p class="flex items-center mx-3">~</p>
-          <input
-            class="w-full p-2 border border-gray-300 rounded-md"
-            type="date"
-            formControlName="endDate"
-          />
+          <div class="w-full">
+            <input
+              class="w-full p-2 border border-gray-300 rounded-md"
+              type="date"
+              formControlName="endDate"
+            />
+            <span
+              *ngIf="todoForm.controls['endDate'].errors?.['required'] && (todoForm.controls['endDate'].dirty || todoForm.controls['endDate'].touched)"
+              class="text-red-500"
+              >内容は必須項目です。</span
+            >
+          </div>
         </div>
       </div>
       <div class="flex justify-center gap-4">
-        <!-- <input
-          class="bg-blue-500 hover:opacity-80 text-white font-bold py-3 px-10 rounded"
-          type="submit"
-          value="登録"
-          [disabled]="todoForm.invalid"
-        /> -->
         <button
-          class="bg-blue-500 hover:opacity-80 text-white font-bold py-3 px-10 rounded"
+          [ngClass]="{
+            'bg-blue-500 hover:opacity-80': !todoForm.invalid,
+            'bg-gray-500 opacity-50 cursor-not-allowed': todoForm.invalid
+          }"
+          class="text-white font-bold py-3 px-10 rounded"
           type="submit"
+          [disabled]="todoForm.invalid"
         >
           登録
         </button>
