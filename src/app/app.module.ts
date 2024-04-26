@@ -16,7 +16,7 @@ import { TodoAddComponent } from './pages/todo/todo-add/todo-add.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'todo',
+    path: 'todos',
     component: TodoListComponent,
   },
   {

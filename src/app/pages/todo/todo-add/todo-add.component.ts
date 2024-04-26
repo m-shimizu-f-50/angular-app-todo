@@ -42,6 +42,6 @@ export class TodoAddComponent implements OnInit {
       endDate: this.todoForm.value.endDate ?? '',
     };
     this.todoService.addToList(newTodo);
-    this.router.navigate(['/todo']);
+    this.router.navigate(['/todos']);
   }
 }

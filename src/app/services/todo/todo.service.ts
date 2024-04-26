@@ -28,8 +28,13 @@ export class TodoService {
      * 3. 第３引数でtodoのidの値を上書き
      */
     this.todoList.push(Object.assign({}, todo, { id: maxId + 1 }));
+  }
 
-    console.log(this.todoList);
+  /**
+   * 全件取得
+   */
+  getList(): Todo[] {
+    return this.todoList.sort((a, b) => (a.startDate > b.startDate ? 1 : -1));
   }
 
   /**
