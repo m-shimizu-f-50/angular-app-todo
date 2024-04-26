@@ -40,7 +40,18 @@
       </a>
     </div>
     <div>
-      <p>{{ todo.startDate }} ~ {{ todo.endDate }}</p>
+      <div class="mb-4">
+        <p>{{ todo.startDate }} ~ {{ todo.endDate }}</p>
+      </div>
+
+      <button
+        class="hover:opacity-80 text-white font-bold py-3 px-4 rounded {{
+          getButtonClass()
+        }}"
+        (click)="onClickProceedStatus()"
+      >
+        {{ getStatusName() }}
+      </button>
     </div>
   </div>
 </div>

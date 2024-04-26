@@ -15,4 +15,9 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.todoList = this.todoService.getList();
   }
+
+  // ステータス変更
+  proceedStatus(id: number): void {
+    this.todoList = this.todoService.proceedStatus(id);
+  }
 }

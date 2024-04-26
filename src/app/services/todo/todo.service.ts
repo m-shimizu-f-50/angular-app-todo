@@ -38,6 +38,33 @@ export class TodoService {
   }
 
   /**
+   * 一件削除
+   */
+  delete(id: number): void {
+    this.todoList = this.todoList.filter((todo) => todo.id !== id);
+  }
+
+  /**
    * 全件削除
    */
+
+  /**
+   * ステータス変更
+   */
+  proceedStatus(id: number): Todo[] {
+    const todo = this.todoList.find((t) => t.id === id);
+    if (!todo) {
+      return this.todoList;
+    }
+
+    // ステータス完了以降の場合予定を削除
+    if (todo.status === 2) {
+      this.delete(todo.id);
+    }
+
+    // ステータスを更新していく(最大2まで)
+    todo.status = Math.min(todo.status + 1, 2);
+
+    return this.todoList;
+  }
 }

@@ -23,7 +23,10 @@
       </div>
       <ng-template #noTodos>
         <div *ngFor="let todo of todoList">
-          <app-todo-card [todo]="todo"></app-todo-card>
+          <app-todo-card
+            [todo]="todo"
+            (proceedStatus)="proceedStatus($event)"
+          ></app-todo-card>
         </div>
       </ng-template>
     </div>
