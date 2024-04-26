@@ -11,6 +11,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { TodoListComponent } from './pages/todo/todo-list/todo-list.component';
 import { TodoAddComponent } from './pages/todo/todo-add/todo-add.component';
+import { TodoCardComponent } from './components/todo/todo-card/todo-card.component';
 
 // ルーティング設定
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
     NotFoundComponent,
     TodoListComponent,
     TodoAddComponent,
+    TodoCardComponent,
   ],
   imports: [
     BrowserModule,
