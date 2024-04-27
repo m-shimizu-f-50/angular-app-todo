@@ -12,10 +12,21 @@ import { Router } from '@angular/router';
 export class TodoAddComponent implements OnInit {
   todoForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
+    category: new FormControl(null, [Validators.required]),
     description: new FormControl('', [Validators.required]),
     startDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', [Validators.required]),
   });
+
+  // カテゴリー選択肢
+  categoryChoices = [
+    { name: 'home', displayName: '家' },
+    { name: 'home_health', displayName: '病院' },
+    { name: 'work', displayName: '仕事' },
+    { name: 'restaurant', displayName: 'ご飯' },
+    { name: 'local_library', displayName: '学習' },
+    { name: 'event', displayName: 'その他イベント' },
+  ];
 
   constructor(private todoService: TodoService, private router: Router) {}
 
@@ -36,6 +47,7 @@ export class TodoAddComponent implements OnInit {
     const newTodo: Todo = {
       id: 0,
       status: 0,
+      category: this.todoForm.value.category ?? undefined,
       title: this.todoForm.value.title ?? '',
       description: this.todoForm.value.description ?? '',
       startDate: this.todoForm.value.startDate ?? '',
