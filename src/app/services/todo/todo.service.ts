@@ -28,11 +28,43 @@ export class TodoService {
      * 3. 第３引数でtodoのidの値を上書き
      */
     this.todoList.push(Object.assign({}, todo, { id: maxId + 1 }));
+  }
 
-    console.log(this.todoList);
+  /**
+   * 全件取得
+   */
+  getList(): Todo[] {
+    return this.todoList.sort((a, b) => (a.startDate > b.startDate ? 1 : -1));
+  }
+
+  /**
+   * 一件削除
+   */
+  delete(id: number): void {
+    this.todoList = this.todoList.filter((todo) => todo.id !== id);
   }
 
   /**
    * 全件削除
    */
+
+  /**
+   * ステータス変更
+   */
+  proceedStatus(id: number): Todo[] {
+    const todo = this.todoList.find((t) => t.id === id);
+    if (!todo) {
+      return this.todoList;
+    }
+
+    // ステータス完了以降の場合予定を削除
+    if (todo.status === 2) {
+      this.delete(todo.id);
+    }
+
+    // ステータスを更新していく(最大2まで)
+    todo.status = Math.min(todo.status + 1, 2);
+
+    return this.todoList;
+  }
 }

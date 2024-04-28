@@ -20,6 +20,23 @@
         >タイトルは必須項目です。</span
       >
       <div class="my-4 flex justify-center">
+        <select
+          class="w-full border border-gray-300 p-2 rounded-md"
+          id="category"
+          formControlName="category"
+        >
+          <option value="null">選択してください</option>
+          <option *ngFor="let choice of categoryChoices" [ngValue]="choice">
+            {{ choice.displayName }}
+          </option>
+        </select>
+      </div>
+      <span
+        *ngIf="todoForm.controls['category'].errors?.['required'] && (todoForm.controls['category'].dirty || todoForm.controls['category'].touched)"
+        class="text-red-500"
+        >カテゴリーは必須項目です。</span
+      >
+      <div class="my-4 flex justify-center">
         <textarea
           class="w-full p-2 border border-gray-300 rounded-md"
           placeholder="内容"
@@ -86,7 +103,7 @@
 
         <button
           class="bg-red-500 hover:opacity-80 text-white font-bold py-3 px-6 rounded"
-          [routerLink]="['/todo']"
+          [routerLink]="['/todos']"
         >
           キャンセル
         </button>

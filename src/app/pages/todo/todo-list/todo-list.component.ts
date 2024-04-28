@@ -10,7 +10,14 @@ import { Todo } from 'src/app/services/todo/todo';
 })
 export class TodoListComponent implements OnInit {
   todoList: Todo[] = [];
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.todoList = this.todoService.getList();
+  }
+
+  // ステータス変更
+  proceedStatus(id: number): void {
+    this.todoList = this.todoService.proceedStatus(id);
+  }
 }

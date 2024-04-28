@@ -4,8 +4,8 @@
   </div>
   <div class="flex flex-col justify-between items-center mx-auto w-500">
     <!-- <app-filter-list (changeFilter)="changeFilter($event)"></app-filter-list> -->
-    <div class="">
-      <div class="py-2 flex justify-around">
+    <div class="w-full">
+      <div class="py-2 flex justify-center gap-4">
         <button
           class="bg-blue-500 hover:opacity-80 text-white font-bold py-3 px-4 rounded"
           [routerLink]="['/todo/add']"
@@ -18,13 +18,17 @@
           全件削除
         </button>
       </div>
-      <div class="py-2" *ngIf="!todoList.length">
+      <div class="py-2" *ngIf="!todoList.length; else noTodos">
         <p class="text-center">登録されている予定はありません</p>
       </div>
-      {{ todoList }}
-      <!-- <li *ngFor="let todo of todoList">
-          <app-todo-list [todo]="todo" (proceedStatus)="proceedStatus($event)"></app-todo-list>
-        </li> -->
+      <ng-template #noTodos>
+        <div *ngFor="let todo of todoList">
+          <app-todo-card
+            [todo]="todo"
+            (proceedStatus)="proceedStatus($event)"
+          ></app-todo-card>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
