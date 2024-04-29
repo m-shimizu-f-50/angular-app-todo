@@ -57,6 +57,7 @@
               class="w-full p-2 border border-gray-300 rounded-md"
               type="date"
               formControlName="startDate"
+              (click)="focusInput($event)"
             />
             <span
               *ngIf="todoForm.controls['startDate'].errors?.['required'] && (todoForm.controls['startDate'].dirty || todoForm.controls['startDate'].touched)"

@@ -32,6 +32,12 @@ export class TodoAddComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  focusInput(event: MouseEvent): void {
+    const input = event.target as HTMLInputElement;
+    console.log('tuuka');
+    input.focus(); // これによりカレンダーが開く可能性があります
+  }
+
   addTodo(): void {
     /*
      * ボタン押下時にバリデーションを発火させるための処理
