@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
+  private apiUrl = 'http://localhost:8000/api/todos';
   todoList: Todo[] = [];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   /**
    * 新規登録
@@ -33,8 +36,9 @@ export class TodoService {
   /**
    * 全件取得
    */
-  getList(): Todo[] {
-    return this.todoList.sort((a, b) => (a.startDate > b.startDate ? 1 : -1));
+  getList(): Observable<any> {
+    // return this.todoList.sort((a, b) => (a.startDate > b.startDate ? 1 : -1));
+    return this.http.get(this.apiUrl);
   }
 
   /**
